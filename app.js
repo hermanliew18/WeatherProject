@@ -7,7 +7,7 @@ const bodyParser = require ("body-Parser");
 
 app.use(bodyParser.urlencoded({extended:true}));
 
-app.get("/", (req,res) => {
+app.get("/", function(req,res){
   res.sendFile(__dirname + "/index.html");
 });
 
@@ -15,7 +15,7 @@ app.post("/",function(req,res){
     const query = req.body.cityName;
     const apiKey = "c49a81fd2d38628c3964667c02a2521c";
     const unit = "metric";
-    const url = "https://api.openweathermap.org/data/2.5/weather? q=" + query + "&appid=" + apiKey + "&unit=" + unit;
+    const url = "https://api.openweathermap.org/data/2.5/weather?q=" + query + "&appid=" + apiKey + "&units=" + unit;
     https.get(url,function(response){
         console.log(response.statusCode);
 
